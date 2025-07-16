@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Applications</title>
+    <link rel="stylesheet" href="style.css">
+       
+</head>
+<body>
+    <h1>All Submitted Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Date Applied</th>
+                <th>Status</th>
+                <th>Notes</th>
+                <th>Actions</th> <!-- New column -->
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- JavaScript will inject data here -->
+        </tbody>
+    </table>
+    <!-- Hidden edit form -->
+<form id="edit-form" style="display: none; margin-top: 30px;">
+    <h3>Edit Application</h3>
+    <input type="hidden" id="edit-id">
+
+    <label>Company:</label>
+    <input type="text" id="edit-company" required><br>
+
+    <label>Role:</label>
+    <input type="text" id="edit-role" required><br>
+
+    <label>Date Applied:</label>
+    <input type="date" id="edit-date" required><br>
+
+    <label>Status:</label>
+    <select id="edit-status" required>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+    </select><br>
+
+    <label>Notes:</label>
+    <textarea id="edit-notes" rows="4"></textarea><br>
+
+    <button type="submit">Update Application</button>
+</form>
+
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

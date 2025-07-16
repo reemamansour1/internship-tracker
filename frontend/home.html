@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Internship Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>Internship Tracker</header>
+
+  <nav>
+    <a href="internship-form.html">Add Application</a>
+    <a href="application.html">View Applications</a>
+    <a href="index.html" onclick="logout()">Log out</a>
+  </nav>
+
+  <div class="content">
+    <p id="welcome-text">Welcome back!</p>
+
+    <img src="internships.jpeg" alt="Internship Tracking Image" />
+
+    <div id="user-actions">
+      <a href="internship-form.html">
+        <button>Add an Application</button>
+      </a>
+      <a href="application.html">
+        <button>View All Applications</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Show welcome message with name from token
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = 'index.html';
+
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    document.getElementById('welcome-text').innerText = `Hi, ${payload.name}!`;
+
+    function logout() {
+      localStorage.removeItem('token');
+    }
+  </script>
+</body>
+</html>
