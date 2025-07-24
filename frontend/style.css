@@ -1,26 +1,33 @@
-/* CSS Variables for Easy Theming */
+
+/* Edited by Reema Mansour */
 :root {
-    --primary-color: #4F46E5;
-    --primary-hover: #4338CA;
-    --secondary-color: #EF4444;
-    --secondary-hover: #DC2626;
-    --success-color: #10B981;
-    --warning-color: #F59E0B;
-    --bg-color: #F9FAFB;
-    --surface-color: #FFFFFF;
-    --surface-hover: #F3F4F6;
-    --text-primary: #111827;
-    --text-secondary: #6B7280;
-    --border-color: #E5E7EB;
-    --accent-gradient: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    --border-radius: 8px;
+    --primary-color: #5B5FDE;
+    --primary-hover: #4B4FCE;
+    --secondary-color: #FF6B6B;
+    --secondary-hover: #FF5252;
+    --bg-color: #0F0F14;
+    --surface-color: #1A1A23;
+    --surface-hover: #23232F;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B4B4B4;
+    --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    --border-radius: 12px;
 }
 
-/* General Styles for All Pages */
+/* Light Mode Variables */
+body.light-mode {
+    --bg-color: #F8F9FA;
+    --surface-color: #FFFFFF;
+    --surface-hover: #F5F5F5;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6C757D;
+    --primary-color: #4F46E5;
+    --primary-hover: #4338CA;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -36,9 +43,18 @@ body {
     text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
+.header-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 1rem; 
+}
 /* Header Section */
 header {
+    text-align: left;
     background: var(--accent-gradient);
     color: white;
     padding: 2rem 0;
@@ -63,96 +79,79 @@ header::before {
     50% { transform: scale(1.1); opacity: 0.3; }
 }
 
-header h1, header {
-    position: relative;
-    z-index: 1;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
 
-/* Navigation Bar */
-nav {
-    background-color: var(--surface-color);
-    padding: 0.75rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-sm);
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+
+
+body.light-mode nav {
+    background-color: rgba(255,255,255,0.95);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-secondary);
-    font-weight: 500;
-    transition: all 0.2s ease;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    font-weight: 200;
+    transition: all 0.3s ease;
+    justify-content: flex-end;
+}
+.nav-links{
+    display: flex;
+    gap: 6rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+.internship-tracker-text {
+    margin-top: 10px;
+    font-weight: 200;
+
+}
+
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--primary-color);
-    background-color: var(--surface-hover);
+    color: var(--text-primary);
 }
 
-nav a.active {
-    color: var(--primary-color);
-    background-color: rgba(79, 70, 229, 0.08);
-}
-
-/* Icon support if you want to add icons */
-nav a i, nav a svg {
-    font-size: 1.1rem;
-    width: 1.1rem;
-    height: 1.1rem;
-}
-
-/* Divider in nav */
-nav .divider {
-    width: 1px;
-    height: 24px;
-    background-color: var(--border-color);
-    margin: 0 0.5rem;
-}
-
-/* User menu on the right */
-nav .user-menu {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+nav a:hover::after {
+    width: 100%;
 }
 
 /* Home Page Content */
 .content {
     max-width: 1200px;
-    margin: 3rem auto;
+    margin: 4rem auto;
     padding: 0 2rem;
 }
 
 h1 {
     color: var(--text-primary);
+    margin-left: 10px;
+    margin-top:20px;
     margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 300;
 }
 
 h2, h3 {
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    font-weight: 250px;
 }
 
 /* Modern Buttons */
 button {
-    padding: 0.75rem 2rem;
     margin: 10px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 200;
     cursor: pointer;
     background: var(--primary-color);
     color: white;
@@ -193,7 +192,9 @@ img {
     width: 100%;
     max-width: 400px;
     height: auto;
-    margin-top: 20px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-lg);
     transition: transform 0.3s ease;
@@ -206,45 +207,66 @@ img:hover {
 /* Form Styles for Index Page */
 form {
     background-color: var(--surface-color);
-    padding: 2rem;
+    padding: 2.5rem;
     margin: 20px auto;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
     max-width: 500px;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+body.light-mode form {
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 label {
     display: block;
     margin-top: 15px;
     margin-bottom: 0.5rem;
-    font-weight: 600;
+    font-weight: 500;
     text-align: left;
-    color: var(--text-primary);
-    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 input, select, textarea, button {
     width: 100%;
-    padding: 0.75rem;
+    padding: 0.875rem;
     margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    border: 2px solid transparent;
     box-sizing: border-box;
     font-size: 1rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 input, select, textarea {
-    background-color: var(--surface-color);
+    background-color: var(--bg-color);
     color: var(--text-primary);
     margin-bottom: 1rem;
+}
+
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+    background-color: #F8F9FA;
+    border: 2px solid #E9ECEF;
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    background-color: rgba(91, 95, 222, 0.05);
+}
+
+body.light-mode input:focus,
+body.light-mode select:focus,
+body.light-mode textarea:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(79, 70, 229, 0.05);
 }
 
 button {
@@ -260,37 +282,38 @@ table {
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
 }
 
 th, td {
-    padding: 1rem;
+    padding: 1rem 1.25rem;
     text-align: left;
 }
 
 th {
-    background: var(--surface-hover);
-    color: var(--text-primary);
+    background: var(--accent-gradient);
+    color: white;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     font-size: 0.875rem;
-    border-bottom: 2px solid var(--border-color);
+    border: none;
 }
 
 td {
-    border-bottom: 1px solid var(--border-color);
-    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-secondary);
+}
+
+body.light-mode td {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 tr {
-    transition: background-color 0.2s ease;
+    transition: background-color 0.3s ease;
 }
 
 tr:hover {
     background-color: var(--surface-hover);
-}
-
-tr:last-child td {
-    border-bottom: none;
 }
 
 td button {
@@ -300,27 +323,28 @@ td button {
     cursor: pointer;
     padding: 0.5rem 1rem;
     margin-right: 5px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.875rem;
     width: auto;
     margin-top: 0;
     margin-bottom: 0;
-    transition: all 0.2s ease;
 }
 
 td button:hover {
     background-color: var(--secondary-hover);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
 }
 
 /* Style for 'Edit' Button */
 .edit-btn {
-    background: var(--warning-color);
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    margin-right: 10px;
+}
+.delete-btn {
+    margin-right: -60px;
 }
 
 .edit-btn:hover {
-    background: #DC7609;
+    background: linear-gradient(135deg, #e580ea 0%, #e4465b 100%);
 }
 
 /* Auth Container */
@@ -337,18 +361,21 @@ td button:hover {
 
 .auth-box {
     background: var(--surface-color);
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 2rem;
     width: 100%;
     border-radius: var(--border-radius);
-    transition: all 0.2s ease;
-    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+body.light-mode .auth-box {
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .auth-box:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(91, 95, 222, 0.2);
 }
 
 /* Utility Classes */
@@ -390,7 +417,12 @@ td button:hover {
     }
     
     td button {
-        padding: 0.375rem 0.75rem;
+        
         font-size: 0.75rem;
     }
+}
+p{
+
+    font-size: 1.5rem;
+    font-weight: 250;
 }

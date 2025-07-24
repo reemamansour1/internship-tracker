@@ -117,6 +117,7 @@ async function loadApplications() {
                 <td><span class="status-${app.status.toLowerCase()}">${app.status}</span></td>
                 <td>${app.notes || 'No notes'}</td>
                 <td>
+                <!-- Edit and Delete buttons and the styling classes are edit-btn and delete btn -->
                     <button onclick="editApplication('${app._id}')" class="edit-btn">Edit</button>
                     <button onclick="deleteApplication('${app._id}')" class="delete-btn">Delete</button>
                 </td>
@@ -131,7 +132,7 @@ async function loadApplications() {
         console.error('❌ Error loading applications:', error);
         const tableBody = document.getElementById('table-body');
         if (tableBody) {
-            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Error loading applications. Check console for details.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Error loading applications.</td></tr>';
         }
     }
 }
